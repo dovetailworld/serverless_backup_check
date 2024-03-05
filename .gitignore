@@ -15,4 +15,4 @@ node_modules/
 # Config related files:
 environment.sh
 
-.venv
+.venv*
