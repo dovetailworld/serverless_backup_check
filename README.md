@@ -20,23 +20,23 @@ Layout of files looks as follows:
 The script then performs the check to see if the backups from today (if available) are same as ones from last time,
 and if they are within tolerance (X% difference per day).
 
-Backup size change limitations are based on the calculations in 
+Backup size change limitations are based on the calculations in
 https://drive.google.com/open?id=1tiQXgoRs9gfTeVeEpIu1l0TDDkTfh4dDDm1Eud0zhxQ
 
 # Deploying
 
-make sure you have access to the AWS acount: `kabisa-backups`
+make sure you have access to the AWS acount: `dovetail-backups`
 
 ```bash
-aws-vault exec kabisa-backups --
+aws-vault exec dovetail-backups --
 sls deploy
 ```
 
 # Adding more buckets to check
 
 In order to do backup checks we need access to the specific backup bucket.
-In case the bucket is in a different account you need to grant this access both in the account that owns the bucket as well as the `kabisa-backups` account (for the lambda function) itself.
-The access for the execution role of the lambda function on the `kabisa-backups` account side is managed by serverless.yaml. So there you will need to append the last two lines to the policy section of serverless.yaml:
+In case the bucket is in a different account you need to grant this access both in the account that owns the bucket as well as the `dovetail-backups` account (for the lambda function) itself.
+The access for the execution role of the lambda function on the `dovetail-backups` account side is managed by serverless.yaml. So there you will need to append the last two lines to the policy section of serverless.yaml:
 
 ```yaml
       Resource:

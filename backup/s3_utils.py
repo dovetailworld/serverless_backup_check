@@ -16,8 +16,12 @@ def iterate_objects(s3_bucket_name: str, prefix: str) -> Iterable:
 
 
 def get_backup_size(s3_bucket_name: str, backup_folder: str) -> int:
-    """Returns the size of bytes of the contents of last backup folder."""
+    """
+    Returns the size of bytes of the contents of last backup folder.
+    If multiple backups exist for the same date, the size of the latest backup folder will be used.
+    """
+
     byte_count = 0
     for obj in iterate_objects(s3_bucket_name, backup_folder):
-        byte_count += obj.size
+        byte_count = obj.size
     return byte_count

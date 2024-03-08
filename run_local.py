@@ -13,7 +13,7 @@ from backup.server_stats import ServerStats
 
 def main(
     backup_folder: str,
-    bucket_name: str = "kabisa-backup-archive",
+    bucket_name: str = "dovetail-backup-archive",
     file_date_format: Optional[str] = None,
 ):
     try:
